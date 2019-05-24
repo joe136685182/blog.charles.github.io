@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fcategory%2F20190524-auto-hello-world.html</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Electron笔记02-Hello World！]]></title>
+    <url>%2Fcategory%2F20190523-electron-note-two.html</url>
+    <content type="text"><![CDATA[引言 在 前一篇文章 中介绍了在macOS上搭建Node.js+Electron的过程。准备好了开发环境，接下来当然是开始搞事情啦！作为一只程序猿，搞事情从哈喽沃德开始！ 第一个Electron AppElectron App的结构 这第一个App的名称暂定为 “test-app” ，它的基础文件结构如下： 1234test-app/├── package.json├── main.js└── index.html 这个结构是Electron App最简单最基础的文件结构，在这些文件里，我们可以定义、编写自己的应用的样式、功能等等。后期随着应用功能的增加，可能会遇到更复杂的组织形式。 各个文件的内容package.json package.json文件是一个Electron App的基础配置文件，基本内容如下： 12345&#123; "name" : "test-app", "version" : "0.1.0", "main" : "main.js"&#125; 其中”name”属性记录了应用的名称，可以自定义；”version”属性记录了应用的版本，可用于应用更新、版本控制等；”main”属性则指定了主进程的入口文件，在下文中会介绍。 作为一个标准的json文件，在这个文件中不能有任何注释符号，如//、/*、#等。同时还需要遵守其它json格式规范，具体细节就不赘述了。 main.js main.js文件（文件名可在package.json中自行定义）是Electron主进程的入口文件，基本内容如下： 123456789101112131415161718192021222324252627282930313233const electron = require('electron'); // 引用 Electron 模块。const app = electron.app; // 控制应用生命周期的模块。const BrowserWindow = electron.BrowserWindow; // 创建原生浏览器窗口的模块// 保持一个对于 window 对象的全局引用，不然当 JavaScript 被 GC 后，window 会被自动地关闭var mainWindow = null;// 当所有窗口被关闭了，退出。app.on('window-all-closed', function () &#123; // 在 OS X 上，通常用户在明确地按下 Cmd + Q 之前，应用会保持活动状态 // if (process.platform != 'darwin') &#123; app.quit(); // &#125;&#125;);// 当 Electron 完成了初始化并且准备创建浏览器窗口时，这个方法就会被调用app.on('ready', function () &#123; // 创建浏览器窗口。 mainWindow = new BrowserWindow(&#123; width: 800, height: 600 &#125;); // 加载应用的 index.html mainWindow.loadURL('file://' + __dirname + '/index.html'); // 默认打开开发工具 // mainWindow.openDevTools(); // 当 window 被关闭，这个事件会被发出 mainWindow.on('closed', function () &#123; // 取消引用 window 对象。如果你的应用支持多窗口的话，通常会把多个 window 对象 // 存放在一个数组里面，但这次是单窗口应用，只有一个 window 对象，退出时要销毁 mainWindow = null; &#125;);&#125;); 当App启动时，Electron主进程会根据package.json中配置的main入口文件，找到并执行。在main.js文件中，Electron完成了主窗口的初始化及创建后，会通过loadURL()函数加载主界面，而这个主界面就由接下来介绍的index.html文件定义。 index.html Electron在根据main.js完成了主窗口的初始化及创建后，会通过loadURL()函数加载index.html作为应用的主界面，基本内容如下： 12345678910&lt;!DOCTYPE html&gt;&lt;html&gt; &lt;head&gt; &lt;title&gt;Hello World!&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Hello World!&lt;/h1&gt; Hello World! Hello Charles! This is your first Electron application, nice try! &lt;/body&gt;&lt;/html&gt; 运行程序 在按照上文完成三个文件的创建流程之后，一个最简单的Electron App就编写完成了。接下来就运行一下这个程序看看效果吧！ 打开终端，切换到应用项目所在文件夹（也就是上述三个文件所在的文件夹），然后输入以下命令： $ electron . Electron就会按照配置文件，初始化并创建主窗口，然后加载index.html文件，效果如下图： 顺手记录一下，macOS下的截图快捷键是 shift+command+4。 后记 到这里，第一个Electron App就跑起来了。所以其实我们可以看到，Electron应用本质上就是通过将浏览器窗口封装为一个应用，然后渲染网页作为界面，并通过JavaScript作为应用逻辑代码的实现语言。所以说，Electron真的是前端友好型语言啊！]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Electron</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Electron笔记01-开发环境的准备]]></title>
+    <url>%2Fcategory%2F20190523-electron-note-one.html</url>
+    <content type="text"><![CDATA[引言 计划用Electron把账本导出脚本GUI化，之前是通过Python3 + Excel文件实现的。虽然基本能满足自己的基本需求，但还是太简陋功能太少了。 在选择GUI方案时，考虑了WPF+C#、Xcode+Swift、Electron等几个方案，但出于以下几点考虑，最后选择了Electron： 第一点是因为目前主力用的rMBP，搞WPF实在是自找麻烦； 第二点是希望这个小玩意儿能跑在mac之外的平台上，毕竟除了手头这台rMBP剩下的都是Win平台，所以Swift不太行（主要是我的Swift水平不行XD）； 再有一点就是想学习一下Node.js，开阔一下眼界，毕竟现在掌握JS的人就能主宰世界[手动斜眼]。 所以就决定是你了，Electron！ 正文系统环境 机器：MacBook Pro (Retina, 13-inch, Late 2013) 系统：macOS Mojave 10.14.4 编辑器：Visual Studio Code 1.32.3 Shell：macOS自带Terminal 搭建开发环境安装Node.js 对于Node.js，有以下几种安装方法可选（建议使用安装包安装）： 1. 安装包安装，到 官网 下载PKG安装包后双击运行，安装提示一步一步执行即可。截至目前最新的版本为 node-v12.3.1 2. 源码手工编译，到 官网 根据自己的平台下载源代码压缩包，解压后手动编译并安装即可。 3. 通过Homebrew安装：在终端中执行brew install node即可。 安装完成后，在终端中分别执行npm -v和node -v查看安装的版本，如果没有报错说明Node.js安装完成。 安装Electron 1. 通过npm安装Electron。建议将Electron安装为全局模式，以便在终端中进行调用。具体安装命令为：npm install electron -g --save 2. 修改Bash配置，将Electron加入系统环境路径： 12$ cd ~$ vi .bash_profile 在.bash_profile文件中添加以下语句： 12 # Setting PATH for Electron/Node.js PATH="/Users/charles/nodejs/npm_global/bin:$&#123;PATH&#125;”export PATH 保存退出后，执行source .bash_profile使配置生效 安装及配置完成后，执行electron -v查看安装的版本，如果没有报错说明Electron安装完成。 后记 到这里，Electron就安装完成了，接下来就是喜闻乐见的Hello World环节啦！吃饭去，白白～]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Electron</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[第一篇文章]]></title>
+    <url>%2Fcategory%2F20190522-first-article.html</url>
+    <content type="text"><![CDATA[Hexo终于搭建完成了，Gitment也配置上了，测试一下文章效果如何。Hexo支持Markdown，看来以后还得学习一下Markdown语法。折腾这些玩意儿虽然没什么实际价值，但还是挺有趣的。 测试一下图片功能这是塞尔维亚贝尔格莱德老城区里，Casanova餐厅的招牌牛排。听说现在已经变成网红店了？ 这张合照也是在贝尔格莱德老城区拍的，在萨瓦河与多瑙河合流处的卡拉梅格丹城堡边上。至今我仍然非常想再去一次。 测试一下PicGo的上传效果 下面的内容没啥意思了 在MarkDown中，如果使用了尖括号对&lt;和&gt;，会被文本默认为HTML语句。这将导致尖括号本身及尖括号中的内容都不会被显示。 解决方法：使用转义字符。使用 &amp; lt; 代替 &lt; , 使用 &amp; gt; 代替 &gt; 。例如要输出&lt;a&gt;，则需要写为&amp; lt;a&amp; gt;]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+</search>

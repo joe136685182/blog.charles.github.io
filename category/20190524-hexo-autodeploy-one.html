@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/hexo/hexo-github-settings.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/hexo/hexo-github-newkey.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/hexo/hexo-github-setkey.png">
-<meta property="og:updated_time" content="2019-05-25T07:14:29.915Z">
+<meta property="og:updated_time" content="2019-05-25T07:17:29.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo文章发布环境的自动部署01-Git配置">
 <meta name="twitter:description" content="引言　　Hexo 博客搭建完了之后，文章发布虽然方便，但发布流程依赖于本机上已经部署好的 Hexo 环境，当要发布文章时，如果部署好的电脑不可用（坏了/不在身边），或者换了新电脑，总之面对一台空荡荡的新电脑，要重新人工搭建已有环境非常麻烦，且之前发布过的文章（md文件）会丢失。 　　为了避免这种情况，我们可以通过 Github 将文章及发布环境打包，做成一键备份/部署的脚本，这样在迁移到新环境后，">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-25 15:14:29" itemprop="dateModified" datetime="2019-05-25T15:14:29+08:00">2019-05-25</time>
+                <time title="修改时间：2019-05-25 15:17:29" itemprop="dateModified" datetime="2019-05-25T15:17:29+08:00">2019-05-25</time>
               
             
           </span>
@@ -544,7 +544,7 @@
 <p>　　第一行设置了 Shell 解释器的路径，可以根据具体情况进行调整；第二行将 Git 配置文件复制到 <code>~</code> 目录下，即 <a href="#设置 GitHub 用户名和邮箱">此处</a> 配置的 GitHub 用户名和邮箱；第三行将之前生成的 SSH Key 文件拷贝到 <code>~/.ssh/</code> 目录下；第四行通过 ssh 命令测试与 GitHub 的连通性。</p>
 <p>　　执行上述命令会生成 <code>GithubKey</code> 文件夹，然后将 <code>~/</code> 目录下的 <code>.gitconfig</code> 文件及 <code>~/.ssh/id_rsa</code> 文件（即上文生成并在 GitHub 网站上配置好的 SSH Key 文件）拷贝到 <code>GithubKey/</code> 目录中。</p>
 <p>　　只要将该目录（也可打包为 zip 文件便于传输）拷贝至新环境下，安装完 Git 工具后，进入目录中执行该脚本文件，即可自动完成 Git 的配置。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>　　本来想一篇文章就把这个内容全部记完，但没想到单单一个 Git 与 GitHub 的配置就那么多内容，所以还是拆分成两篇吧，第二篇 <a href="20190524-hexo-autodeploy-two.html">在这里</a>，先吃饭去了～</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>　　本来想一篇文章就把这个内容全部记完，但没想到单单一个 Git 与 GitHub 的配置就那么多内容，所以还是拆分成两篇吧，第二篇 <a href="20190525-hexo-autodeploy-two.html">在这里</a>，先吃饭去了～</p>
 
       
     </div>

@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/hexo/hexo-github-settings.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/hexo/hexo-github-newkey.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/hexo/hexo-github-setkey.png">
-<meta property="og:updated_time" content="2019-05-24T09:26:34.943Z">
+<meta property="og:updated_time" content="2019-05-25T06:58:54.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo文章发布环境的自动部署-Git配置">
 <meta name="twitter:description" content="引言　　Hexo 博客搭建完了之后，文章发布虽然方便，但发布流程依赖于本机上已经部署好的 Hexo 环境，当要发布文章时，如果部署好的电脑不可用（坏了/不在身边），或者换了新电脑，总之面对一台空荡荡的新电脑，要重新人工搭建已有环境非常麻烦，且之前发布过的文章（md文件）会丢失。 　　为了避免这种情况，我们可以通过 Github 将文章及发布环境打包，做成一键备份/部署的脚本，这样在迁移到新环境后，">
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="创建时间：2019-05-24 10:47:37 / 修改时间：17:26:34" itemprop="dateCreated datePublished" datetime="2019-05-24T10:47:37+08:00">2019-05-24</time>
+              <time title="创建时间：2019-05-24 10:47:37" itemprop="dateCreated datePublished" datetime="2019-05-24T10:47:37+08:00">2019-05-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-25 14:58:54" itemprop="dateModified" datetime="2019-05-25T14:58:54+08:00">2019-05-25</time>
               
             
           </span>
@@ -525,10 +537,12 @@
 <p>　　点击”Add SSH key”保存即可。保存完成后，如果在生成 SSH 密钥对时没有使用默认的存放路径，则需要配置 SSH 连接的 Key 文件路径，下次有空再写应该怎么处理多 Key 文件的问题。此处默认 SSH Key 文件路径为 <code>~/.ssh/id_rsa</code> 及 <code>~/.ssh/id_rsa</code> 。</p>
 <p>　　在终端中执行 <code>ssh -T git@github.com</code> 测试连通性，如果是第一次通过 SSH 连接 GitHub 的话，会提示”目标服务器未确认，是否保存 RSA key 信息并继续”，此处输入”yes”并回车即可。当出现下文提示时，说明 SSH Key 已经配置成功：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -T git@github.com</span></span><br><span class="line">The authenticity of host 'github.com (13.229.188.59)' can't be established.</span><br><span class="line">RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line">Warning: Permanently added 'github.com,13.229.188.59' (RSA) to the list of known hosts.</span><br><span class="line">Hi joe136685182! You've successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
-<h4 id="编写-SSH-Key-自动部署脚本"><a href="#编写-SSH-Key-自动部署脚本" class="headerlink" title="编写 SSH Key 自动部署脚本"></a>编写 SSH Key 自动部署脚本</h4><p>　　当换到一台新的电脑上时，我们肯定不想再重复一遍生成、配置、测试 SSH Key 的过程，所以可以把已经生成的密钥对文件复制出来，并通过 Shell 脚本自动复制到目标目录，具体的 Shell 脚本文件内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">cp ./.gitconfig ~</span><br><span class="line">cp -p ./id_rsa* ~/.ssh/</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<h4 id="编写-SSH-Key-自动部署脚本"><a href="#编写-SSH-Key-自动部署脚本" class="headerlink" title="编写 SSH Key 自动部署脚本"></a>编写 SSH Key 自动部署脚本</h4><p>　　当换到一台新的电脑上时，我们肯定不想再重复一遍生成、配置、测试 SSH Key 的过程，所以可以把已经生成的密钥对文件复制出来，并通过 Shell 脚本自动复制到目标目录。在终端中执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir GithubKey</span><br><span class="line">cd GithubKey</span><br><span class="line">touch init_github.sh</span><br><span class="line">chmod +x ./init_github.sh</span><br><span class="line">vi init_github.sh</span><br></pre></td></tr></table></figure>
+<p>　　在打开的编辑界面中输入以下内容，并保存退出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">cp ./.gitconfig ~/</span><br><span class="line">cp -p ./id_rsa* ~/.ssh/</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>　　第一行设置了 Shell 解释器的路径，可以根据具体情况进行调整；第二行将 Git 配置文件复制到 <code>~</code> 目录下，即 <a href="#设置 GitHub 用户名和邮箱">此处</a> 配置的 GitHub 用户名和邮箱；第三行将之前生成的 SSH Key 文件拷贝到 <code>~/.ssh/</code> 目录下；第四行通过 ssh 命令测试与 GitHub 的连通性。</p>
-<p>　　要使用这个脚本进行 Git 的自动配置，需要将 <code>~</code> 目录下的 <code>.gitconfig</code> 文件及 <code>~/.ssh/id_rsa</code> 文件（即上文生成并在 GitHub 网站上配置好的 SSH Key 文件）拷贝到该脚本文件所在的目录中。</p>
+<p>　　执行上述命令会生成 <code>GithubKey</code> 文件夹，然后将 <code>~/</code> 目录下的 <code>.gitconfig</code> 文件及 <code>~/.ssh/id_rsa</code> 文件（即上文生成并在 GitHub 网站上配置好的 SSH Key 文件）拷贝到 <code>GithubKey/</code> 目录中。</p>
 <p>　　只要将该目录（也可打包为 zip 文件便于传输）拷贝至新环境下，安装完 Git 工具后，进入目录中执行该脚本文件，即可自动完成 Git 的配置。</p>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>　　本来想一篇文章就把这个内容全部记完，但没想到单单一个 Git 与 GitHub 的配置就那么多内容，所以还是拆分成两篇吧，先吃饭去了～</p>
 
@@ -580,6 +594,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/category/20190524-hexo-autodeploy-one.html" rel="prev" title="hexo-autodeploy-two">
+                hexo-autodeploy-two <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -656,7 +674,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

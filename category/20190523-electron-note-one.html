@@ -100,7 +100,7 @@
 
 
   <meta name="description" content="引言　　计划用Electron把账本导出脚本GUI化，之前是通过Python3 + Excel文件实现的。虽然基本能满足自己的基本需求，但还是太简陋功能太少了。 　　在选择GUI方案时，考虑了WPF+C#、Xcode+Swift、Electron等几个方案，但出于以下几点考虑，最后选择了Electron： 　　第一点是因为目前主力用的rMBP，搞WPF实在是自找麻烦；　　第二点是希望这个小玩意儿能">
-<meta name="keywords" content="笔记,Electron">
+<meta name="keywords" content="Electron,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Electron笔记01-开发环境的准备">
 <meta property="og:url" content="https://www.charlesjoe.com.cn/category/20190523-electron-note-one.html">
@@ -515,7 +515,7 @@
 <p>　　<strong>安装完成后，在终端中分别执行<code>npm -v</code>和<code>node -v</code>查看安装的版本，如果没有报错说明Node.js安装完成。</strong>  </p>
 <h3 id="安装Electron"><a href="#安装Electron" class="headerlink" title="安装Electron"></a>安装Electron</h3><p>　　1. 通过npm安装Electron。建议将Electron安装为全局模式，以便在终端中进行调用。具体安装命令为：<code>npm install electron -g --save</code>  </p>
 <p>　　2. 修改Bash配置，将Electron加入系统环境路径：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd ~</span><br><span class="line"><span class="meta">$</span> vi .bash_profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ~</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi .bash_profile</span></span><br></pre></td></tr></table></figure>
 <p>在.bash_profile文件中添加以下语句：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Setting PATH for Electron/Node.js</span></span><br><span class="line">PATH=<span class="string">"/Users/charles/nodejs/npm_global/bin:<span class="variable">$&#123;PATH&#125;</span>”export PATH</span></span><br></pre></td></tr></table></figure>
 <p>　　保存退出后，执行<code>source .bash_profile</code>使配置生效  </p>
@@ -544,9 +544,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
             <a href="/tags/Electron/" rel="tag"># Electron</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
         </div>
       

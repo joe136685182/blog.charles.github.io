@@ -100,21 +100,22 @@
 
 
   <meta name="description" content="引言　　Bark 是一款我最近很常用的推送 App，具体介绍可以参考少数派的 这篇文章 以及小众软件的 这篇文章。简单来说，Bark 是一款超级轻量级的 iOS 端消息 push 接收工具，消息推送走的是苹果官方的 push 通道，实时性和稳定性都非常可靠。这个 App 支持自定义请求，自行部署服务器， 客户端 与 服务端 均是开源的，适合注重隐私的用户。">
-<meta name="keywords" content="笔记,Bark">
+<meta name="keywords" content="Bark,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bark上手及脚本操作介绍">
 <meta property="og:url" content="https://www.charlesjoe.com.cn/category/20190725-bark-one.html">
 <meta property="og:site_name" content="Charles的杂货铺">
 <meta property="og:description" content="引言　　Bark 是一款我最近很常用的推送 App，具体介绍可以参考少数派的 这篇文章 以及小众软件的 这篇文章。简单来说，Bark 是一款超级轻量级的 iOS 端消息 push 接收工具，消息推送走的是苹果官方的 push 通道，实时性和稳定性都非常可靠。这个 App 支持自定义请求，自行部署服务器， 客户端 与 服务端 均是开源的，适合注重隐私的用户。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_reg_device.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_mainpage.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/online_post.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_noyification.png">
-<meta property="og:updated_time" content="2019-07-25T03:11:17.436Z">
+<meta property="og:updated_time" content="2019-07-25T15:11:38.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bark上手及脚本操作介绍">
 <meta name="twitter:description" content="引言　　Bark 是一款我最近很常用的推送 App，具体介绍可以参考少数派的 这篇文章 以及小众软件的 这篇文章。简单来说，Bark 是一款超级轻量级的 iOS 端消息 push 接收工具，消息推送走的是苹果官方的 push 通道，实时性和稳定性都非常可靠。这个 App 支持自定义请求，自行部署服务器， 客户端 与 服务端 均是开源的，适合注重隐私的用户。">
-<meta name="twitter:image" content="http://pic.charlesjoe.com.cn/bark/bark_mainpage.png">
+<meta name="twitter:image" content="http://pic.charlesjoe.com.cn/bark/bark_reg_device.png">
 
 
 
@@ -420,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-07-25 08:49:03 / 修改时间：11:11:17" itemprop="dateCreated datePublished" datetime="2019-07-25T08:49:03+08:00">2019-07-25</time>
+              <time title="创建时间：2019-07-25 08:49:03 / 修改时间：23:11:38" itemprop="dateCreated datePublished" datetime="2019-07-25T08:49:03+08:00">2019-07-25</time>
             
 
             
@@ -499,7 +500,9 @@
       
         <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>　　Bark 是一款我最近很常用的推送 App，具体介绍可以参考少数派的 <a href="https://sspai.com/post/53090" target="_blank" rel="noopener">这篇文章</a> 以及小众软件的 <a href="https://www.appinn.com/bark-for-iphone/" target="_blank" rel="noopener">这篇文章</a>。简单来说，Bark 是一款超级轻量级的 iOS 端消息 push 接收工具，消息推送走的是苹果官方的 push 通道，实时性和稳定性都非常可靠。这个 App 支持自定义请求，自行部署服务器， <a href="https://github.com/Finb/Bark" target="_blank" rel="noopener">客户端</a> 与 <a href="https://github.com/Finb/go-tools" target="_blank" rel="noopener">服务端</a> 均是开源的，适合注重隐私的用户。</p>
 <a id="more"></a>
-<h1 id="Bark上手及脚本操作介绍"><a href="#Bark上手及脚本操作介绍" class="headerlink" title="Bark上手及脚本操作介绍"></a>Bark上手及脚本操作介绍</h1><h2 id="Bark上手"><a href="#Bark上手" class="headerlink" title="Bark上手"></a>Bark上手</h2><p>　　首先在 <a href="https://apps.apple.com/cn/app/bark-customed-notifications/id1403753865" target="_blank" rel="noopener">App Store</a> 上下载 Bark 客户端，安装完成后打开即可。主界面如图，显示了目前支持的几种向手机推送消息的链接，它们均以 <code>https://服务端地址/设备识别码/推送内容及参数</code> 为格式。直接在浏览器中访问各个链接，可以测试 Bark 推送的各项功能，目前支持标题、正文、URL 跳转及自动复制功能。</p>
+<h1 id="Bark上手及脚本操作介绍"><a href="#Bark上手及脚本操作介绍" class="headerlink" title="Bark上手及脚本操作介绍"></a>Bark上手及脚本操作介绍</h1><h2 id="Bark上手"><a href="#Bark上手" class="headerlink" title="Bark上手"></a>Bark上手</h2><p>　　首先在 <a href="https://apps.apple.com/cn/app/bark-customed-notifications/id1403753865" target="_blank" rel="noopener">App Store</a> 上下载 Bark 客户端，安装完成后打开安装的应用。第一次打开时，主界面如图，点击”注册设备”，并在弹出的授权窗口中，允许应用发送通知。</p>
+<p><img src="http://pic.charlesjoe.com.cn/bark/bark_reg_device.png" alt="主界面"></p>
+<p>　　授权之后的应用主界面如图，显示了目前支持的几种推送消息格式的请求链接，它们均以 <code>https://服务端地址/设备识别码/推送内容及参数</code> 为格式。直接在浏览器中访问各个链接，可以测试 Bark 推送的各项功能，目前支持标题、正文、URL 跳转及自动复制功能。</p>
 <p><img src="http://pic.charlesjoe.com.cn/bark/bark_mainpage.png" alt="Bark 应用主页"></p>
 <h3 id="Bark-请求参数说明"><a href="#Bark-请求参数说明" class="headerlink" title="Bark 请求参数说明"></a>Bark 请求参数说明</h3><p>　　Bark 支持 GET 和 POST 请求，只需向服务端发起相应类型的请求，并传递相应的参数即可。请求的标准格式为 <code>https://{server}/{key}/{category}/{title}/{message}?{option}={opt_val}&amp;{option}={opt_val}</code> ，各项参数的说明如下：</p>
 <ul>
@@ -519,10 +522,10 @@
 <li>　　copy: 配置自动/手动复制时，具体要复制的文本。没有该参数时默认复制通知文本全文；</li>
 <li>　　url: 配置点击通知时，要跳转的网页。没有该参数时点击通知自动打开 Bark 应用。</li>
 </ul>
-<h4 id="GET-请求"><a href="#GET-请求" class="headerlink" title="GET 请求"></a>GET 请求</h4><p>　　GET 请求会将请求的各个参数直接放在链接中，Bark 应用的首页介绍的各个链接都是使用这种请求形式，可以直接使用浏览器访问来发起，如直接访问 <code>https://api.day.app/yourkey/验证码是1234?automaticallyCopy=1</code> 可以向 yourkey 对应的设备发送”验证码是1234”的通知，并让设备在收到通知后自动复制通知全文。</p>
+<h2 id="Bark-脚本操作方法"><a href="#Bark-脚本操作方法" class="headerlink" title="Bark 脚本操作方法"></a>Bark 脚本操作方法</h2><h3 id="GET-请求"><a href="#GET-请求" class="headerlink" title="GET 请求"></a>GET 请求</h3><p>　　GET 请求会将请求的各个参数直接放在链接中，Bark 应用的首页介绍的各个链接都是使用这种请求形式，可以直接使用浏览器访问来发起，如直接访问 <code>https://api.day.app/yourkey/验证码是1234?automaticallyCopy=1</code> 可以向 yourkey 对应的设备发送”验证码是1234”的通知，并让设备在收到通知后自动复制通知全文。</p>
 <p>　　除了通过浏览器直接访问，还可以通过程序/脚本发起请求。以 Python 为例，通过 <code>requests</code> 库可以很简单地向服务端发起请求：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"&#123;server&#125;/&#123;key&#125;/&#123;title&#125;/&#123;msg&#125;?automaticallyCopy=1"</span></span><br><span class="line">server_addr = <span class="string">"https://api.day.app"</span>  <span class="comment"># 此处填写服务端地址</span></span><br><span class="line">my_key = <span class="string">"abcd1234dcba"</span>              <span class="comment"># 此处填写自己的设备识别码</span></span><br><span class="line">my_title = <span class="string">"这是标题"</span>                 <span class="comment"># 此处填写通知标题</span></span><br><span class="line">my_msg = <span class="string">"验证码是1234"</span>               <span class="comment"># 此处填写通知内容</span></span><br><span class="line"></span><br><span class="line">url = url.format(server=server_addr, key=my_key, title=my_title, msg=my_msg)</span><br><span class="line">r = requests.get(url)</span><br></pre></td></tr></table></figure>
-<h4 id="POST-请求"><a href="#POST-请求" class="headerlink" title="POST 请求"></a>POST 请求</h4><p>　　GET 请求会将参数明文暴露在访问的 URL 中，出于安全考虑，使用 POST 请求更为妥当。通过 POST 发起请求时，可以使用 <a href="https://www.sojson.com/http/test.html" target="_blank" rel="noopener">这个工具</a> 来发起。注意，通过 POST 发起请求时，应该向 <code>{server}/{key}/</code> （如 <code>https://api.day.app/abcd1234dcba/</code> ）而不是 <code>{server}</code> （如 <code>https://api.day.app</code> ）发起请求，设备识别码是请求地址的一部分。</p>
+<h3 id="POST-请求"><a href="#POST-请求" class="headerlink" title="POST 请求"></a>POST 请求</h3><p>　　GET 请求会将参数明文暴露在访问的 URL 中，出于安全考虑，使用 POST 请求更为妥当。通过 POST 发起请求时，可以使用 <a href="https://www.sojson.com/http/test.html" target="_blank" rel="noopener">这个工具</a> 来发起。注意，通过 POST 发起请求时，应该向 <code>{server}/{key}/</code> （如 <code>https://api.day.app/abcd1234dcba/</code> ）而不是 <code>{server}</code> （如 <code>https://api.day.app</code> ）发起请求，设备识别码是请求地址的一部分。</p>
 <p><img src="http://pic.charlesjoe.com.cn/bark/online_post.png" alt="在线发送 POST 请求"></p>
 <p>　　设备收到的推送通知如图：</p>
 <p><img src="http://pic.charlesjoe.com.cn/bark/bark_noyification.png" alt="通知推送"></p>
@@ -552,9 +555,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
             <a href="/tags/Bark/" rel="tag"># Bark</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -576,6 +579,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/category/20190725-bark-two.html" rel="prev" title="Bark 服务端部署及 https 配置">
+                Bark 服务端部署及 https 配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -652,7 +659,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -781,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bark上手及脚本操作介绍"><span class="nav-number">2.</span> <span class="nav-text">Bark上手及脚本操作介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bark上手"><span class="nav-number">2.1.</span> <span class="nav-text">Bark上手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bark-请求参数说明"><span class="nav-number">2.1.1.</span> <span class="nav-text">Bark 请求参数说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-请求"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">GET 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#POST-请求"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">POST 请求</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bark上手及脚本操作介绍"><span class="nav-number">2.</span> <span class="nav-text">Bark上手及脚本操作介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bark上手"><span class="nav-number">2.1.</span> <span class="nav-text">Bark上手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bark-请求参数说明"><span class="nav-number">2.1.1.</span> <span class="nav-text">Bark 请求参数说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bark-脚本操作方法"><span class="nav-number">2.2.</span> <span class="nav-text">Bark 脚本操作方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-请求"><span class="nav-number">2.2.1.</span> <span class="nav-text">GET 请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST-请求"><span class="nav-number">2.2.2.</span> <span class="nav-text">POST 请求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>

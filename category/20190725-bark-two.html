@@ -108,10 +108,10 @@
 <meta property="og:description" content="引言　　这篇文章 中简单介绍了 Bark 这个工具的使用方法，但从安全和隐私角度考虑，我们更希望能自己搭建服务端进行消息推送。本文将介绍如何自行部署 Bark 服务端，并启用 Https 安全通信协议。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_test_server.png">
-<meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_set_server.png">
+<meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_set_svr.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_new_key.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_rcv_push.png">
-<meta property="og:updated_time" content="2019-07-25T15:11:35.626Z">
+<meta property="og:updated_time" content="2019-07-25T15:25:54.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bark 服务端部署及 https 配置">
 <meta name="twitter:description" content="引言　　这篇文章 中简单介绍了 Bark 这个工具的使用方法，但从安全和隐私角度考虑，我们更希望能自己搭建服务端进行消息推送。本文将介绍如何自行部署 Bark 服务端，并启用 Https 安全通信协议。">
@@ -421,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-07-25 19:42:59 / 修改时间：23:11:35" itemprop="dateCreated datePublished" datetime="2019-07-25T19:42:59+08:00">2019-07-25</time>
+              <time title="创建时间：2019-07-25 19:42:59 / 修改时间：23:25:54" itemprop="dateCreated datePublished" datetime="2019-07-25T19:42:59+08:00">2019-07-25</time>
             
 
             
@@ -520,12 +520,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@VM-0-8-ubuntu:~$ cd /home/ubuntu/BarkSvr</span><br><span class="line">ubuntu@VM-0-8-ubuntu:~/BarkSvr$ nohup ./bark-server -l 0.0.0.0 -p 8081 -d ./data &amp;</span><br><span class="line">[1] 18528</span><br><span class="line">ubuntu@VM-0-8-ubuntu:~/BarkSvr$ nohup: ignoring input and appending output to &apos;nohup.out&apos;</span><br></pre></td></tr></table></figure>
 <p>　　此时服务端程序将会运行在后台，所有的程序日志都会写入到当前目录的 <code>nohup.out</code> 文件中，如果遇到问题，可以查看该文件获得运行日志分析问题。</p>
 <h3 id="绑定要推送的设备"><a href="#绑定要推送的设备" class="headerlink" title="绑定要推送的设备"></a>绑定要推送的设备</h3><p>　　打开 Bark 手机端，如果是第一次打开，参照 <a href="https://blog.charlesjoe.com.cn/category/20190725-bark-one.html#Bark上手" target="_blank" rel="noopener">这篇文章</a> 进行应用初始化。初始化完成后，点击右上角的”+”号，打开”添加私有服务器”界面，并按图中内容填写（自行替换你自己的服务器地址和监听端口），然后点击右上角的”✅”按钮确认。如果服务器地址或监听端口填写错误，确认时界面下方会有错误提示，请检查填写内容是否正确。</p>
-<p><img src="http://pic.charlesjoe.com.cn/bark/bark_set_server.png" alt></p>
+<p><img src="http://pic.charlesjoe.com.cn/bark/bark_set_svr.png" alt="设置服务器地址"></p>
 <p>　　如果服务器地址和端口填写正确，程序将会自动返回到首页，并显示目前支持的几种推送格式，其中就包含本设备的设备识别码，如本机的识别码为 <code>BAL9bUowzEqFNryvgPnEnS</code> 。</p>
 <p><img src="http://pic.charlesjoe.com.cn/bark/bark_new_key.png" alt="设备识别码"></p>
 <p>　　接下来可以参考 <a href="https://blog.charlesjoe.com.cn/category/20190725-bark-one.html#GET-请求" target="_blank" rel="noopener">这篇文章</a> 测试推送服务，比如可以直接用浏览器访问 <code>http://139.199.198.139:8081/BAL9bUowzEqFNryvgPnEnS/测试标题/测试推送文本</code> 并在手机上查看是否收到相应推送。</p>
 <p><img src="http://pic.charlesjoe.com.cn/bark/bark_rcv_push.png" alt></p>
-<h2 id="配置-HTTPS-协议"><a href="#配置-HTTPS-协议" class="headerlink" title="配置 HTTPS 协议"></a>配置 HTTPS 协议</h2><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1>
+<h2 id="配置-HTTPS-协议"><a href="#配置-HTTPS-协议" class="headerlink" title="配置 HTTPS 协议"></a>配置 HTTPS 协议</h2><p>To be continued …</p>
+<h3 id="生成-SSL-证书"><a href="#生成-SSL-证书" class="headerlink" title="生成 SSL 证书"></a>生成 SSL 证书</h3><h3 id="配置-Apache-反向代理"><a href="#配置-Apache-反向代理" class="headerlink" title="配置 Apache 反向代理"></a>配置 Apache 反向代理</h3><h3 id="配置-Bark-客户端"><a href="#配置-Bark-客户端" class="headerlink" title="配置 Bark 客户端"></a>配置 Bark 客户端</h3><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1>
       
     </div>
 
@@ -777,7 +778,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署-Bark-服务端并启动"><span class="nav-number">2.</span> <span class="nav-text">部署 Bark 服务端并启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-Bark-服务端"><span class="nav-number">2.1.</span> <span class="nav-text">部署 Bark 服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Bark-服务端并验证功能"><span class="nav-number">2.2.</span> <span class="nav-text">启动 Bark 服务端并验证功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启-Bark-服务端后台运行并绑定设备"><span class="nav-number">2.3.</span> <span class="nav-text">开启 Bark 服务端后台运行并绑定设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启-Bark-服务端后台运行"><span class="nav-number">2.3.1.</span> <span class="nav-text">开启 Bark 服务端后台运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定要推送的设备"><span class="nav-number">2.3.2.</span> <span class="nav-text">绑定要推送的设备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-HTTPS-协议"><span class="nav-number">2.4.</span> <span class="nav-text">配置 HTTPS 协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署-Bark-服务端并启动"><span class="nav-number">2.</span> <span class="nav-text">部署 Bark 服务端并启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-Bark-服务端"><span class="nav-number">2.1.</span> <span class="nav-text">部署 Bark 服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动-Bark-服务端并验证功能"><span class="nav-number">2.2.</span> <span class="nav-text">启动 Bark 服务端并验证功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启-Bark-服务端后台运行并绑定设备"><span class="nav-number">2.3.</span> <span class="nav-text">开启 Bark 服务端后台运行并绑定设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启-Bark-服务端后台运行"><span class="nav-number">2.3.1.</span> <span class="nav-text">开启 Bark 服务端后台运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定要推送的设备"><span class="nav-number">2.3.2.</span> <span class="nav-text">绑定要推送的设备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-HTTPS-协议"><span class="nav-number">2.4.</span> <span class="nav-text">配置 HTTPS 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成-SSL-证书"><span class="nav-number">2.4.1.</span> <span class="nav-text">生成 SSL 证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Apache-反向代理"><span class="nav-number">2.4.2.</span> <span class="nav-text">配置 Apache 反向代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Bark-客户端"><span class="nav-number">2.4.3.</span> <span class="nav-text">配置 Bark 客户端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>

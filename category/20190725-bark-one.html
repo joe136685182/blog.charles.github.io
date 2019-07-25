@@ -108,10 +108,10 @@
 <meta property="og:description" content="引言　　Bark 是一款我最近很常用的推送 App，具体介绍可以参考少数派的 这篇文章 以及小众软件的 这篇文章。简单来说，Bark 是一款超级轻量级的 iOS 端消息 push 接收工具，消息推送走的是苹果官方的 push 通道，实时性和稳定性都非常可靠。这个 App 支持自定义请求，自行部署服务器， 客户端 与 服务端 均是开源的，适合注重隐私的用户。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_reg_device.png">
-<meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_mainpage.png">
+<meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_mainpage_default.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/online_post.png">
 <meta property="og:image" content="http://pic.charlesjoe.com.cn/bark/bark_noyification.png">
-<meta property="og:updated_time" content="2019-07-25T15:11:38.491Z">
+<meta property="og:updated_time" content="2019-07-25T15:23:42.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bark上手及脚本操作介绍">
 <meta name="twitter:description" content="引言　　Bark 是一款我最近很常用的推送 App，具体介绍可以参考少数派的 这篇文章 以及小众软件的 这篇文章。简单来说，Bark 是一款超级轻量级的 iOS 端消息 push 接收工具，消息推送走的是苹果官方的 push 通道，实时性和稳定性都非常可靠。这个 App 支持自定义请求，自行部署服务器， 客户端 与 服务端 均是开源的，适合注重隐私的用户。">
@@ -421,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-07-25 08:49:03 / 修改时间：23:11:38" itemprop="dateCreated datePublished" datetime="2019-07-25T08:49:03+08:00">2019-07-25</time>
+              <time title="创建时间：2019-07-25 08:49:03 / 修改时间：23:23:42" itemprop="dateCreated datePublished" datetime="2019-07-25T08:49:03+08:00">2019-07-25</time>
             
 
             
@@ -503,10 +503,10 @@
 <h1 id="Bark上手及脚本操作介绍"><a href="#Bark上手及脚本操作介绍" class="headerlink" title="Bark上手及脚本操作介绍"></a>Bark上手及脚本操作介绍</h1><h2 id="Bark上手"><a href="#Bark上手" class="headerlink" title="Bark上手"></a>Bark上手</h2><p>　　首先在 <a href="https://apps.apple.com/cn/app/bark-customed-notifications/id1403753865" target="_blank" rel="noopener">App Store</a> 上下载 Bark 客户端，安装完成后打开安装的应用。第一次打开时，主界面如图，点击”注册设备”，并在弹出的授权窗口中，允许应用发送通知。</p>
 <p><img src="http://pic.charlesjoe.com.cn/bark/bark_reg_device.png" alt="主界面"></p>
 <p>　　授权之后的应用主界面如图，显示了目前支持的几种推送消息格式的请求链接，它们均以 <code>https://服务端地址/设备识别码/推送内容及参数</code> 为格式。直接在浏览器中访问各个链接，可以测试 Bark 推送的各项功能，目前支持标题、正文、URL 跳转及自动复制功能。</p>
-<p><img src="http://pic.charlesjoe.com.cn/bark/bark_mainpage.png" alt="Bark 应用主页"></p>
+<p><img src="http://pic.charlesjoe.com.cn/bark/bark_mainpage_default.png" alt="Bark 应用主页"></p>
 <h3 id="Bark-请求参数说明"><a href="#Bark-请求参数说明" class="headerlink" title="Bark 请求参数说明"></a>Bark 请求参数说明</h3><p>　　Bark 支持 GET 和 POST 请求，只需向服务端发起相应类型的请求，并传递相应的参数即可。请求的标准格式为 <code>https://{server}/{key}/{category}/{title}/{message}?{option}={opt_val}&amp;{option}={opt_val}</code> ，各项参数的说明如下：</p>
 <ul>
-<li>server: 接收请求的服务端地址， 默认为 <code>api.day.app</code>，是 App 作者自有的服务器。用户自行部署服务端后可以将其替换掉（如上图中的  <code>bark.charlesjoe.com.cn</code> 就是我自己的服务端地址）；</li>
+<li>server: 接收请求的服务端地址， 默认为 <code>api.day.app</code>，是 App 作者自有的服务器。用户自行部署服务端后可以将其替换掉；</li>
 <li>key：设备识别码，用于区分不同的设备，每次删除 Bark 应用再重新安装后会重置。发起请求时设备识别码决定了通知会被推送到哪部设备上，请保管好自己的设备识别码，避免被无聊人士骚扰；</li>
 </ul>
 <ul>
